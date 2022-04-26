@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_obswebsocket/templates *
+recursive-include octoprint_obswebsocket/translations *
+recursive-include octoprint_obswebsocket/static *

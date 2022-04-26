@@ -1,0 +1,39 @@
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label">{{ _('Host') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.obswebsocket.host">
+        </div>
+        <label class="control-label">{{ _('Port') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.obswebsocket.port">
+        </div>
+        <label class="control-label">{{ _('Password') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.obswebsocket.password">
+        </div>
+        <label class="control-label">{{ _('OS') }}</label>
+        <div class="controls">
+            <select data-bind="value: settings.plugins.obswebsocket.os">
+                <option value="windows">Windows</option>
+                <option value="mac">Mac</option>
+                <option value="linux">Linux</option>
+            </select>
+        </div>
+        <label class="control-label">{{ _('Progress') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.obswebsocket.progress">
+            <span class="help-inline">{{ _('Name of the progress text source. Unset this to not send progress.') }}</span>
+        </div>
+        <label class="control-label">{{ _('Tool') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.obswebsocket.tool">
+            <span class="help-inline">{{ _('Name of the tool temp text source. Unset this to not send tool temp.') }}</span>
+        </div>
+        <label class="control-label">{{ _('Bed') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.obswebsocket.bed">
+            <span class="help-inline">{{ _('Name of the bed temp text source. Unset this to not send bed temp.') }}</span>
+        </div>
+    </div>
+</form>
