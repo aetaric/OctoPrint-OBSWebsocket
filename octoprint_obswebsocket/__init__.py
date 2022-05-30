@@ -24,6 +24,7 @@ class ObswebsocketPlugin(
         self.progress  = 0
         self.temps = None
         self.tempthread = None
+        self.stopstream = True
 
     def on_startup(self, host, port):
         self._logger.info("OBS Websocket Plugin Connecting to OBS")
@@ -31,6 +32,7 @@ class ObswebsocketPlugin(
             self._settings.get(["host"]), 
             self._settings.get(["port"]), 
             self._settings.get(["password"]))
+        self.stopstream = self._settings.get(["stopstream"])
         self.websocket.register(self.on_streamup, events.StreamStarted)
         self.websocket.register(self.on_streamdown, events.StreamStopped)
         self._logger.info("Registered OBS events")
@@ -79,7 +81,8 @@ class ObswebsocketPlugin(
                 self.websocket.call(requests.StartStreaming())
         elif event in ["PrintDone","PrintCanceled"]:
             if self.streaming:
-                self.websocket.call(requests.StopStreaming())
+                if self.stopstream:
+                    self.websocket.call(requests.StopStreaming())
 
     def update_temps(self):
         if self.websocket.ws.connected:
@@ -115,7 +118,8 @@ class ObswebsocketPlugin(
             os = "windows",
             progress = "progress",
             tool = "tool-temp",
-            bed = "bed-temp"
+            bed = "bed-temp",
+            stopstream = True
         )
     
     def on_settings_save(self, data):
